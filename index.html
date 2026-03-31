@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ridberg Soft — Business Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme" />
+  <style>
+    :root {
+      --rb-navy: #0b1220;
+      --rb-slate: #1e293b;
+      --rb-accent: #38bdf8;
+      --rb-accent-soft: rgba(56, 189, 248, 0.15);
+      --rb-mist: #e2e8f0;
+      --rb-muted: #94a3b8;
+    }
+    .reveal-viewport {
+      background: var(--rb-navy);
+    }
+    .reveal {
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--rb-mist);
+    }
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .reveal h1 { font-size: 2.4em; line-height: 1.1; }
+    .reveal h2 { font-size: 1.85em; margin-bottom: 0.5em; }
+    .reveal h3 { font-size: 1.15em; color: var(--rb-accent); margin-top: 0; }
+    .reveal a {
+      color: var(--rb-accent);
+    }
+    .rb-tag {
+      display: inline-block;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.45em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rb-accent);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .rb-sub {
+      font-size: 0.55em;
+      color: var(--rb-muted);
+      max-width: 28em;
+      margin: 0.75em auto 0;
+      line-height: 1.5;
+    }
+    .rb-logo {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.1em;
+      color: #fff;
+      margin-bottom: 0.25em;
+    }
+    .rb-url {
+      font-size: 0.5em;
+      color: var(--rb-muted);
+      margin-top: 1.5em;
+    }
+    .rb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 2rem;
+      text-align: left;
+      font-size: 0.72em;
+      line-height: 1.45;
+      margin-top: 0.5em;
+    }
+    .rb-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      backdrop-filter: blur(8px);
+    }
+    .rb-card h4 {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.95em;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 0.4em;
+    }
+    .rb-card p {
+      margin: 0;
+      color: var(--rb-muted);
+      font-size: 0.92em;
+    }
+    .rb-bullets {
+      text-align: left;
+      font-size: 0.62em;
+      line-height: 1.55;
+      color: var(--rb-muted);
+      max-width: 36em;
+      margin: 0.5em auto 0;
+    }
+    .rb-bullets li {
+      margin-bottom: 0.45em;
+    }
+    .rb-bullets-middot {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+    .rb-overlay {
+      background: linear-gradient(135deg, rgba(11, 18, 32, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(11, 18, 32, 0.85) 100%);
+    }
+    .rb-cta {
+      font-size: 0.55em;
+      color: var(--rb-muted);
+      margin-top: 1.25em;
+    }
+    .rb-case-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2.5rem 2.75rem !important;
+      box-sizing: border-box;
+    }
+    .rb-case-slide .rb-tag {
+      margin-bottom: 0.65rem;
+    }
+    .rb-case-slide h2 {
+      margin-bottom: 0;
+      max-width: 14em;
+    }
+    .rb-case-body {
+      font-size: 0.66em;
+      color: var(--rb-muted);
+      max-width: 26em;
+      margin: 1.35em 0 0;
+      line-height: 1.68;
+      font-weight: 400;
+    }
+    .rb-contact {
+      font-size: 0.48em;
+      line-height: 1.7;
+      color: var(--rb-muted);
+      margin-top: 1rem;
+    }
+    .rb-contact p {
+      margin: 0.35em 0;
+    }
+    @media (max-width: 900px) {
+      .rb-grid { grid-template-columns: 1fr; }
+    }
+    /* Title + selected slides: same centered block as case study / closing */
+    .rb-overlay-center {
+      text-align: center;
+    }
+    .rb-overlay-center .rb-sub,
+    .rb-overlay-center .rb-url {
+      text-align: center;
+    }
+    .rb-overlay-center h1,
+    .rb-overlay-center h2 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .rb-overlay-center h1 {
+      max-width: 14em;
+    }
+    .rb-overlay-center .rb-grid {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 56em;
+    }
+    .rb-overlay-center .rb-card h4,
+    .rb-overlay-center .rb-card p {
+      text-align: center;
+    }
+    /* Our advantages: title + partnership line centered on slide */
+    .rb-advantages-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      min-height: 62vh;
+    }
+    .rb-advantages-slide .rb-sub {
+      text-align: center;
+      width: 100%;
+      max-width: 34em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Title slide: block centered on slide; sub-paragraph centered */
+    .rb-title-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      min-height: 62vh;
+    }
+    .rb-title-slide .rb-sub {
+      text-align: center;
+      width: 100%;
+      max-width: 36em;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0.75em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- 1 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay rb-overlay-center rb-title-slide" style="padding: 2.5rem 2rem; border-radius: 4px;">
+          <p class="rb-tag">Partnership deck</p>
+          <p class="rb-logo">Ridberg Soft</p>
+          <h1>Expert software development teams for ambitious businesses</h1>
+          <p class="rb-sub">Dedicated delivery teams across frontend, backend, full‑stack, mobile, QA, DevOps, and adjacent roles — without the overhead of building HR and payroll infrastructure yourself.</p>
+          <p class="rb-url"><a href="https://ridberg-soft.com/">ridberg-soft.com</a></p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 2rem; border-radius: 4px;">
+          <h2>Built for how you actually scale</h2>
+          <ul class="rb-bullets">
+            <li><strong style="color:#fff">Startups &amp; SMBs</strong> — move fast with a team shaped around your roadmap.</li>
+            <li><strong style="color:#fff">Global reach</strong> — we support engagements with clients in <strong style="color:#e2e8f0">Israel, the United States, Australia,</strong> and the <strong style="color:#e2e8f0">DACH</strong> region.</li>
+            <li><strong style="color:#fff">End‑to‑end support</strong> — we shoulder recruiting, employment administration, and ongoing coordination so you stay focused on product and growth.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 2rem; border-radius: 4px;">
+          <h2>How we work</h2>
+          <ul class="rb-bullets rb-bullets-middot" style="font-size:0.58em;max-width:36em">
+            <li>· You define the roles, seniority, and skills your product needs.</li>
+            <li>· We screen hundreds of candidates internally — conducting thorough interviews and technical assessments.</li>
+            <li>· We narrow it down to a shortlist of the best&#8209;fit, pre&#8209;validated candidates.</li>
+            <li>· You interview, validate, and select the people who join your team.</li>
+          </ul>
+          <p class="rb-cta" style="font-size:0.52em">Transparent process. No guesswork — you stay in control of who ships your software.</p>
+          <p class="rb-cta" style="font-size:0.52em;margin-top:0.5em">We do the heavy lifting upfront so you only meet the few who are truly right for you.</p>
+        </div>
+      </section>
+
+      <!-- Case study (slide 4 after title) -->
+      <section
+        data-background-image="images/slide-4-office.png"
+        data-background-size="cover"
+        data-background-position="center center"
+      >
+        <div class="rb-overlay rb-case-slide" style="border-radius: 4px;">
+          <p class="rb-tag">Proven scale</p>
+          <h2>Efficiently — growth with Ridberg Soft</h2>
+          <p class="rb-case-body">
+            Over three years, <strong style="color:#fff">Efficiently</strong> scaled from 15 to 100 specialists with our support — spanning <strong style="color:#e2e8f0">developers, designers, DevOps engineers,</strong> and <strong style="color:#e2e8f0">QA</strong> — while keeping hiring and operations predictable.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay rb-overlay-center rb-advantages-slide" style="padding: 2rem; border-radius: 4px;">
+          <p class="rb-tag">Why teams choose us</p>
+          <h2>Our advantages</h2>
+          <p class="rb-sub" style="margin-top:0.5em">A partnership model designed for predictable delivery, compliance, and commercial clarity.</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 1.75rem; border-radius: 4px;">
+          <h2 style="font-size:1.5em;margin-bottom:0.6em;">Talent &amp; fit</h2>
+          <div class="rb-grid">
+            <div class="rb-card">
+              <h4>Access to top talent across domains</h4>
+              <p>We source highly skilled professionals tailored to any business need, leveraging a vast and diverse talent pool across multiple areas of expertise.</p>
+            </div>
+            <div class="rb-card">
+              <h4>Accurate candidate matching</h4>
+              <p>Our precise and thorough selection process guarantees the best fit for your specific requirements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 1.75rem; border-radius: 4px;">
+          <h2 style="font-size:1.5em;margin-bottom:0.6em;">Commercial &amp; tax</h2>
+          <div class="rb-grid">
+            <div class="rb-card">
+              <h4>Cost efficiency</h4>
+              <p>Benefit from competitive salary structures and favorable rate differences without compromising on quality.</p>
+            </div>
+            <div class="rb-card">
+              <h4>Tax optimization</h4>
+              <p>Enjoy reduced tax burden through advantageous IT park regulations and frameworks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 1.75rem; border-radius: 4px;">
+          <h2 style="font-size:1.5em;margin-bottom:0.6em;">Trust &amp; operations</h2>
+          <div class="rb-grid">
+            <div class="rb-card">
+              <h4>Compliance you can rely on</h4>
+              <p>We operate with full transparency and professionalism, so you can be confident in every partnership.</p>
+            </div>
+            <div class="rb-card">
+              <h4>Seamless financial operations</h4>
+              <p>No complications with international payments or fund transfers — we handle everything smoothly and securely.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1920&q=80"
+        data-background-size="cover"
+      >
+        <div class="rb-overlay" style="padding: 2rem; border-radius: 4px; text-align: center;">
+          <h2>Time‑saving process</h2>
+          <p class="rb-sub" style="max-width:26em;margin:0 auto;text-align:center;font-size:0.65em">
+            We manage the entire recruitment cycle, allowing you to focus on your core business without investing time in hiring.
+          </p>
+          <p class="rb-cta" style="text-align:center;margin-top:1.5em">
+            <strong style="color:#fff">Ridberg Soft</strong>
+          </p>
+          <h3 style="margin-top:1em;margin-bottom:0.25em;font-size:0.62em;font-weight:500;">Please contact for any details</h3>
+          <div class="rb-contact">
+            <p><a href="https://ridberg-soft.com/">ridberg-soft.com</a></p>
+            <p><a href="mailto:6609646@gmail.com">6609646@gmail.com</a></p>
+            <p><a href="https://www.linkedin.com/in/dmitriy-golubev-478598122/">LinkedIn — Dmitriy Golubev</a></p>
+            <p><a href="https://wa.me/375296609646">WhatsApp: +375&nbsp;29&nbsp;660‑9646</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: "c/t",
+      transition: "fade",
+      backgroundTransition: "fade",
+      width: 1280,
+      height: 720,
+      margin: 0.08,
+      pdfMaxPagesPerSlide: 1,
+      pdfSeparateFragments: false,
+    });
+  </script>
+</body>
+</html>
